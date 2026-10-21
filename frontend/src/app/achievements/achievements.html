@@ -1,0 +1,11 @@
+<p>achievements</p>
+
+@if(currGame()){
+    @for (achievement of currGame().achievements; track achievement.name){
+        <p>{{achievement.name}}</p>
+    }
+}
+
+@else{
+    <p>loading games</p>
+}

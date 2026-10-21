@@ -1,0 +1,14 @@
+<h1>Achievement Tracker</h1>
+
+<h2>your games are:</h2>
+@if(games.length > 0){
+    @for (game of games; track game.gameName){
+        <a [routerLink] = "['/game', game.appid]">{{game.gameName}}</a>
+        <p></p>
+    }
+}
+
+@else
+{
+    <p>loading games</p>
+}
