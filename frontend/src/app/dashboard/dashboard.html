@@ -1,14 +1,29 @@
-<h1>Achievement Tracker</h1>
 
-<h2>your games with achievements are:</h2>
-@if(games.length > 0){
-    @for (game of games; track game.gameName){
-        <a [routerLink] = "['/game', game.appid]">{{game.gameName}}</a>
-        <p></p>
-    }
-}
+<div class="page-container">
+  <h1>Your Game Library</h1>
+  <p class="page-subtitle">
+    Your games, your achievements, your progress.
+  </p>
 
-@else
-{
-    <p>loading games</p>
-}
+  @if (games.length > 0) {
+    <div class="games-grid">
+      @for (game of games; track game.appid) {
+        <a
+          class="game-card"
+          [routerLink]="['/game', game.appid]"
+        >
+          <h3>{{ game.gameName }}</h3>
+
+          <div class="game-card-footer">
+            <span>View achievements</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p>Loading your games...</p>
+    </div>
+  }
+</div>

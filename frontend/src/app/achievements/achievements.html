@@ -1,14 +1,44 @@
-<p>achievements</p>
 
-@if(currGame()){
-    @for (achievement of currGame().achievements; track achievement.name){
-        <p>
-            {{ achievement.name }} -
-            {{ achievement.completed ? 'achieved' : 'unachieved' }}
-        </p>
-    }
-}
+<div class="page-container">
+  <a class="back-link" routerLink="/dashboard">
+    ← Back to games
+  </a>
 
-@else{
-    <p>loading achievements</p>
-}
+  @if (currGame()) {
+    <div class="achievements-header">
+      <h1>{{ currGame().gameName }}</h1>
+      <p class="page-subtitle">
+        Track your progress and completion status.
+      </p>
+    </div>
+
+    <div class="achievement-list">
+      @for (
+        achievement of currGame().achievements;
+        track achievement.name
+      ) {
+        <div
+          class="achievement-card"
+          [class.completed]="achievement.completed"
+        >
+          <div class="achievement-icon">
+            {{ achievement.completed ? '✓' : '🔒' }}
+          </div>
+
+          <div class="achievement-info">
+            <h3>{{ achievement.name }}</h3>
+            <p>
+              {{ achievement.description || 'No description available.' }}
+            </p>
+          </div>
+
+          <span class="achievement-status">
+            {{ achievement.completed ? 'Unlocked' : 'Locked' }}
+          </span>
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="page-subtitle">Loading achievements...</p>
+  }
+</div>
