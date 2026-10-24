@@ -1,4 +1,4 @@
-## To run the webapp first open a terminal in the folder and then run node server.js, then open a new terminal and cd into frontend and run the angular frontend with ng serve. 
+To run the webapp first open a terminal in the folder and then run node server.js, then open a new terminal and cd into frontend and run the angular frontend with ng serve. 
 
 # login with steam
 
